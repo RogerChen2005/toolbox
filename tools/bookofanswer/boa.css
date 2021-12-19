@@ -1,0 +1,129 @@
+@keyframes but1{
+    0%{
+        transform: translate(-50%,-50%);
+        top: 50;
+        left: -100%;
+    }
+    50%{
+        transform: translate(-50%,-50%);
+        top: 50;
+        left: -100%;
+    }
+    100%{
+        transform: translate(-50%,-50%);
+        top: 80%;
+        left: 50%;
+    }
+}
+@keyframes anime{
+    0%{
+        transform: translate(-50%,-50%);
+        top: 50;
+        left: -100%;
+    }
+    50%{
+        transform: translate(-50%,-50%);
+        top: 50;
+        left: -100%;
+    }
+    100%{
+        transform: translate(-50%,-50%);
+        top: 50%;
+        left: 50%;
+    }
+}
+@keyframes bg{
+    0%{
+        transform: scale(2,2);
+    }
+    0%{
+        transform: scale(2,2);
+    }
+    100%{
+        transform: scale(1,1);
+    }
+}
+html,body,div,p{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    height: 100%;
+}
+#main{
+    font-size: 80px;
+    color: white;
+    text-shadow: 5px 5px 15px rgba(0,0,0,0.85);
+}
+#d{
+    position: absolute;
+    line-height: 90px;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    animation: anime 1s;
+    transform: translate(-50%, -50%); 
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    text-align: center;
+    transition: 1s;
+}
+#c{
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    width: 200px;
+    transform: translate(-50%,-50%);
+    font-weight: lighter;
+    font-style: normal;
+    color:azure;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.85)
+}
+#b{
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center;
+    animation: bg 1.6s;
+    overflow: hidden;
+    transition: 1s;
+}
+#main1 {
+    opacity: 0.9;
+    background-image: linear-gradient(-45deg,#0ef7ff,#2f00ff);
+    position: absolute;
+    animation: but1 1.6s;
+    transform: translate(-50%,-50%);
+    background-size: 230px 100px;
+    background-position-x: 0px;
+    background-position-y: 0px;
+    top: 80%;
+    left: 50%;
+    width: 200px;
+    height: 60px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.85);
+    border-radius: 40px;
+    transition: width 0.5s,height 0.5s,border-radius 0.5s;
+    transition-timing-function: ease-in-out;
+    text-align: center;
+    transition: 0.5s;
+}
+#main1:hover {
+    background-position-x: -30px;
+    background-position-y: -40px;
+}
+#text{
+    color: azure;
+    position: relative;
+    line-height: 20px;
+    width: 200px;
+    height: 60px;
+    display: block;
+    letter-spacing: 3px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 300;
+}
+#mainico{
+    color:azure;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.85);
+}

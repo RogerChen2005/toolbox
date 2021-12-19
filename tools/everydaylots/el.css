@@ -1,0 +1,184 @@
+html{
+    width: 100%;
+    height: 100%;
+    overflow: hidden; 
+}
+body{
+    background-image: url(bg.webp);
+    background-position: center bottom;   /* ±³¾°ÑùÊ½ */
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100%;
+    font-size: 100%;
+}
+@keyframes anime{
+    0%{
+        left: 50%;
+    }
+    100%{
+        left: 30%;
+    }
+}
+@keyframes anime1{
+    0%{
+        top:300%
+    }
+    100%{
+        top:50%;
+    }
+}
+#title{
+    position: absolute;
+    top:15%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+    width: 100%;
+    text-align: center;
+}
+#result{
+    position: absolute;
+    top: 300%;
+    right: -5%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    width: 30%;
+    height: 50%;
+    border-radius: 40px;
+    box-shadow: 20px 20px 30px rgba(0,0,0,0.5);
+}
+#main{
+    position: absolute;
+    
+    background-size: cover;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    width: 50%;
+    height: 50%;
+    border-radius: 40px;
+    box-shadow: 20px 20px 30px rgba(0,0,0,0.5);
+}
+#input{
+    opacity: 0.9;
+    position: relative;
+    transform: translate(-50%,-50%);
+    top: 25%;
+    left: 50%;
+    width: 80%;
+    height: 50%;
+    margin: 0;
+    transition: width 0.5s,height 0.5s,border-radius 0.5s;
+    transition-timing-function: ease-in-out;
+    transition: 0.5s;
+    text-align: left;
+}
+#main1 {
+    opacity: 0.9;
+    position: relative;
+    background-image: linear-gradient(-45deg,#0ef7ff,#2f00ff);
+    margin-top: 100px;
+    animation: but1 1.6s;
+    transform: translate(-50%,-50%);
+    background-size: 150% 180%;
+    background-position-x: 0px;
+    background-position-y: 0px;
+    left: 50%;
+    width: 60%;
+    height: 15%;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.85);
+    border-radius: 40px;
+    transition: width 0.5s,height 0.5s,border-radius 0.5s;
+    transition-timing-function: ease-in-out;
+    text-align: center;
+    transition: 0.5s;
+}
+#main1:hover {
+    background-position-x: -30px;
+    background-position-y: -40px;
+}
+#text{
+    color: azure;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+#plz{
+    position: relative;
+    font-size:200%;
+    margin: 20;
+    color: azure;
+}
+#in{
+    margin: 0;
+    position: relative;
+    background-image: linear-gradient(-90deg,#ececec,#ececec);
+    border-radius: 10px;
+    top: 10%;
+    width: 100%;
+    height: 25%;
+    transition: 0.5s;
+}
+#in:hover{
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.35);           
+}
+#in:focus-within{
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.35);           
+}
+#inp{
+    position: relative;
+    left: 2%;
+    width: 90%;
+    height: 90%;
+    background-color: transparent;
+    margin: 0;
+    font-size: 30px;
+    border: transparent;
+    color: rgb(104, 104, 104);
+}
+#inp:focus{
+    outline: transparent;
+}
+#btn{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+    border-radius: 10%;
+    font-size: 30px;
+    color: azure;
+    font-weight: 300;
+}
+#name1{
+    position:relative;
+    font-size: 500%;
+    color: rgb(204, 204, 204);
+    text-shadow: 5px 5px 15px rgba(0,0,0,0.35);  
+    font-weight: 300;
+}
+#name{
+    position:relative;
+    font-size: 300%;
+    color: rgb(204, 204, 204);
+    text-shadow: 5px 5px 15px rgba(0,0,0,0.35);  
+    font-weight: 300;
+}
+#display{
+    font-size: 550%;
+    margin: 0;
+    color: azure;
+}
+.glass{
+    opacity: 0.6;
+    background-image: linear-gradient(-45deg,#9aadad,#c1bdd3);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+}
+#mainico{
+    color :azure;
+}

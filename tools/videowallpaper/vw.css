@@ -1,0 +1,60 @@
+@keyframes anime{
+    0%{
+        transform: translate(0%,50%);
+    }
+    100%{
+        transform: translate(0%,0%);
+    }
+}
+body{
+    height: 100%;
+    overflow: hidden;
+}
+#mtext p{
+    font-size: 110px;
+    line-height: 110px;
+}
+#mtext #btn{
+    font-weight: 600;
+    width: 350px;
+    color:azure;
+    height: 100px;
+    font-size: 22px;
+    border:none;
+    background-image: linear-gradient(120deg, #48c6ef 0%, #6f86d6 100%);
+    transition: 0.5s;
+    cursor:pointer;
+    margin-top: 75px;
+    border-radius: 8px;
+}
+#mtext #btn small{
+    font-weight: 400;
+    font-size: 15px;
+}
+#mtext #btn:hover {
+    box-shadow: inset 0px 0px 500px rgba(0, 0, 0, 0.2);
+}
+#mtext{
+    width: 45%;
+    text-align: center;
+}
+#pic{
+    position: absolute;
+    top:0%;
+    left:50%;
+    margin:0;
+    border: 0;
+}
+#pic img{
+    transform: scale(0.8) translate(-25%,20%);
+}
+#all{
+    width: 100%;
+    animation: anime 1s;
+    position: absolute;
+    transform: translate(0%,0%);
+}
+#mtext small{
+    line-height: 20px;
+    font-size: 20px;
+}

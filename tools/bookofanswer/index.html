@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Of Answer</title>
+    <link href = "../../ui.css" type = "text/css" rel = "stylesheet" />
+    <link href = "boa.css" type = "text/css" rel = "stylesheet" />
+</head>
+<body id = "b" background="linear-gradient(90deg,#61ff41,#00ffb3)">
+    <div id = "head">
+        <span class = "topele" >
+            <a id = "mainico" class = "toptext" href="../../index.html">rooger's toolbox</a>
+        </span>
+        <span class = "topele">
+            <a  class = "toptext" href="../../index.html">main</a>
+        </span>
+        <span class = "topele">
+            <a class = "toptext" href="../../list.html">tool list</a>
+        </span>
+        <span class = "topele">
+            <a class = "toptext" href="../../about.html">about me</a>
+        </span>
+    </div>
+    <div style="text-align: center;">
+        <p id = "t" style="opacity: 0;"><a href = "cd/cd.html">These Words will only be seen by wise people</a></p>
+    </div>
+    <div id = "d">
+        <p id = "main"></p>
+    </div>
+    <div id = "main1">
+        <a id = "text" href = "index.html"><br>Again</a>
+    </div>
+    <div id = "c">
+        <p>Powered by <a href="https://rogerchen2005.github.io/" style="color: white;">RogerChen233</a></p>
+    </div>
+    <script>
+        var flag = Math.floor(Math.random()*110) % 12;
+        switch(flag){
+            case 0:
+                document.getElementById("main").innerHTML = "Yes!";
+                document.getElementById("b").background = "https://s4.ax1x.com/2021/12/18/TVcFrn.jpg";
+                break;
+            case 1:
+                document.getElementById("main").innerHTML = "No...";
+                document.getElementById("b").background = "https://s4.ax1x.com/2021/12/18/TVciKs.jpg";
+                break;
+            case 2:
+                document.getElementById("main").innerHTML = "Try it.";
+                document.getElementById("b").background = "https://s4.ax1x.com/2021/12/18/TVc92Q.jpg";
+                break;
+            case 3:
+                document.getElementById("main").innerHTML = "Ask in another way.";
+                document.getElementById("b").background = "https://s4.ax1x.com/2021/12/18/TVcCvj.jpg";
+                break;
+            case 4:
+                document.getElementById("main").innerHTML = "For sure.";
+                document.getElementById("b").background = "https://s4.ax1x.com/2021/12/18/TVcp8g.jpg";
+                break;
+            case 5:
+                document.getElementById("main").innerHTML = "You can't!";
+                document.getElementById("b").background = "https://s4.ax1x.com/2021/12/18/TVcEV0.jpg";
+                break;
+            case 6:
+                document.getElementById("main").innerHTML = "Maybe yes.";
+                document.getElementById("b").background = "https://s4.ax1x.com/2021/12/18/TVcVaV.jpg";
+                break;
+            case 7:
+                document.getElementById("main").innerHTML = "Maybe not.";
+                document.getElementById("b").background = "https://s4.ax1x.com/2021/12/18/TVcZ5T.jpg";
+                break;
+            case 8:
+                document.getElementById("main").innerHTML = "It's certain.";
+                document.getElementById("b").background = "https://s4.ax1x.com/2021/12/18/TVcmPU.jpg";
+                break;
+            case 9:
+                document.getElementById("main").innerHTML = "That's impossible.";
+                document.getElementById("b").background = "https://s4.ax1x.com/2021/12/18/TVcu24.jpg";
+                break;
+            case 10:
+                document.getElementById("main").innerHTML = "You have little chance.";
+                document.getElementById("b").background = "https://s4.ax1x.com/2021/12/18/TVcnGF.jpg";
+                break;
+            default:
+                document.getElementById("main").innerHTML = "Try again.";
+                document.getElementById("b").background = "https://s4.ax1x.com/2021/12/18/TVcKxJ.jpg";
+                break;
+        }
+    </script>
+</body>
+</html> 

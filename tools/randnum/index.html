@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RandNum</title>
+    <link href="../../ui.css" type="text/css" rel="stylesheet" />
+    <link href="rn.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="head">
+        <span class="topele">
+            <a id="mainico" class="toptext" href="../../index.html">rooger's toolbox</a>
+        </span>
+        <span class="topele">
+            <a class="toptext" href="../../index.html">main</a>
+        </span>
+        <span class="topele">
+            <a class="toptext" href="../../list.html">tool list</a>
+        </span>
+        <span class="topele">
+            <a class="toptext" href="../../about.html">about me</a>
+        </span>
+    </div>
+    <script>
+        var cnt = Array();
+        var max = -1;
+        function ran(){
+            var temp = Math.random() * 45 + 1;
+            temp = Math.floor(temp);
+            if(cnt[temp] >= 1){
+                document.getElementById("is").innerText = "已经被抽到过";
+                document.getElementById("is").style = "color:red;";
+                cnt[temp]+= 1;
+            }else{
+                document.getElementById("is").innerText = "没有被抽到过";
+                document.getElementById("is").style = "color:black;";
+                cnt[temp] = 1
+            }
+            document.getElementById("show").innerText = temp;
+            document.getElementById("history").innerHTML += temp;
+            document.getElementById("history").innerHTML += " ";
+            for(var i = 1;i<=45;i++){
+                t = parseInt(cnt[i]);
+                if(t > max){
+                    max = t;
+                    document.getElementById("luckiest").innerHTML = i+"是最幸运的，被抽到了"+cnt[i]+"次";
+                }
+            }
+        }
+    </script>
+    <div style="animation: t 1s;position: absolute;width:100%;height: 80%;">
+        <div id = "left">
+            <p style="height: 10%;"></p>
+            <p id = "show">0</p>
+            <button id = "btn" onclick="ran()">Click to Random</button>
+            <p id = "is"></p>
+        </div>
+        <div id = "right" sytle = "height:40%">
+            <div class = "rbox">
+                <p style="height: 5%;"></p>
+                <p id = "hstext" class = "rele">History:</p>
+                <p id = "history" class = "rele" style="margin:0;font-size:40px;width: 500px;"> </p>
+            </div>
+            <div class = "rbox">
+                <p style="height: 5%;"></p>
+                <p id = "hstext" class = "rele">Luckiest:</p>
+                <p id = "luckiest" class = "rele"> </p>
+            </div>
+        </div>
+    </div>
+    <script>
+        ran();
+    </script>
+</body>
+
+</html>

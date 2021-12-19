@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日一签</title>
+    <link href = "../../ui.css" type = "text/css" rel = "stylesheet" />
+    <link href = "el.css" type = "text/css" rel = "stylesheet" />
+</head>
+<body>
+    <div id = "head">
+        <span class = "topele" >
+            <a id = "mainico" class = "toptext" href="../../index.html">rooger's toolbox</a>
+        </span>
+        <span class = "topele">
+            <a  class = "toptext" href="../../index.html">main</a>
+        </span>
+        <span class = "topele">
+            <a class = "toptext" href="../../list.html">tool list</a>
+        </span>
+        <span class = "topele">
+            <a class = "toptext" href="../../about.html">about me</a>
+        </span>
+    </div>
+    <div id = "title">
+        <span id = "name1">每日一签</span>
+        <span id = "name">By Castle</span>
+    </div>
+    <div id="main">
+        <div class = "glass">
+        </div>
+        <div id="input">
+            <br>
+            <p id = "plz">输入你的姓名：</p>
+            <div id = "in">
+                <input id = "inp">
+            </div>
+        </div>
+        <div id = "main1">
+            <div id = "text">
+                <input type = "submit" id = "btn" value="确认" onclick="ran()">
+            </div>
+        </div>  
+    </div>
+    <div id = "result">
+        <div class = "glass">
+        </div>
+        <p id = "plz" style="margin-top: 15%;">您的今日签是</p>
+        <p id = "display"></p>
+    </div>
+    <script>
+        function getHashCode(str,caseSensitive){
+            if(!caseSensitive){
+                str = str.toLowerCase();
+            }
+            var hash  =   1315423911,i,ch;
+            for (i = str.length - 1; i >= 0; i--) {
+                ch = str.charCodeAt(i);
+                hash ^= ((hash << 5) + ch + (hash >> 2));
+            }
+            return  (hash & 0x7FFFFFFF);
+        }
+        function ran(){
+            var name = document.getElementById("inp").value;
+            var d = new Date();
+            var h = getHashCode(name,1);
+            var mod = 8;
+            var date = d.getDate() + 1;
+            var day = d.getDay() + 2;
+            var month = d.getMonth() + 1;
+            var year = d.getFullYear() + 1;
+            var p = parseInt((h + year + day + month) / date) % mod;
+            switch(p){
+                case 0:
+                    document.getElementById("display").innerHTML = "上上签";
+                    document.getElementById("display").style = "color:red;";
+                    break;
+                case 1:
+                    document.getElementById("display").innerHTML = "上签";
+                    document.getElementById("display").style = "color:rgb(255, 145, 0);";
+                    break;  
+                case 2:
+                    document.getElementById("display").innerHTML = "中上签";
+                    document.getElementById("display").style = "color:rgb(157, 255, 0);";
+                    break;  
+                case 3:
+                    document.getElementById("display").innerHTML = "中签";
+                    document.getElementById("display").style = "color:rgb(0, 255, 106);";
+                    break;  
+                case 4:
+                    document.getElementById("display").innerHTML = "中下签";
+                    document.getElementById("display").style = "color:rgb(0, 255, 242);";
+                    break;  
+                case 5:
+                    document.getElementById("display").innerHTML = "下签";
+                    document.getElementById("display").style = "color:rgb(0, 162, 255);";
+                    break;    
+                case 6:
+                    document.getElementById("display").innerHTML = "下下签";
+                    document.getElementById("display").style = "color:rgb(0, 110, 255);";
+                    break;  
+                case 7:
+                    document.getElementById("display").innerHTML = "SPECIAL!!!";
+                    document.getElementById("display").style = "color:gold;";
+                    break;  
+            }
+            document.getElementById("main").style = "animation: anime 1s;animation-fill-mode: forwards;";
+            document.getElementById("result").style = "animation: anime1 1s;animation-fill-mode: forwards;";
+        }
+    </script>
+</body>
+</html>

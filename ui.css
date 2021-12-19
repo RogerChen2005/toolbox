@@ -1,0 +1,33 @@
+@keyframes animate{
+    0%{
+        transform: translate(0%,-150%);;
+    }
+    100%{
+        transform: translate(0%,0%);;
+    }
+}
+#head{
+    animation: animate 1s;
+}
+.topele{
+    text-align: center;
+    font-size: 20px;
+    margin-right: 50px;
+    margin-left: 20px;
+    transition: 0.5s;
+}
+.topele:hover{
+    font-size: 23px;
+}
+.toptext{
+    text-decoration: none;
+    color:darkgray;
+}
+#mainico{
+    color: rgb(70, 70, 70);
+    font-size: 25px;
+    transition: 1s;
+}
+#mainico:hover{
+    font-size: 28px;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easter eggs</title>
+    <style>
+        html,body{
+            height:100%;
+            width: 100%;
+        }
+        @keyframes bg{
+            0%{
+                transform: scale(2,2);
+            }
+            0%{
+                transform: scale(2,2);
+            }
+            100%{
+                transform: scale(1,1);
+            }
+        }
+        #b{
+            background-repeat: no-repeat;
+            background-size:cover;
+            background-position: center;
+            overflow: hidden;
+        }
+        div{
+            margin: 0;
+            padding: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            position: absolute;
+            font-size:30px;
+            font-family: Microsoft Yahei;
+            color: azure;
+            text-shadow: 5px 5px 15px black;
+        }
+    </style>
+</head>
+<body id = "b">
+    <div>
+        <p>恭喜，你找到了一个彩蛋。赶紧<a style="color: azure;" href = "../index.html">点我</a>回去看看彩蛋里写了什么吧。</p>
+    </div>
+    <script>
+        var flag = Math.floor(Math.random()*13)+1;
+        var str = "../res/" + flag + ".jpg"
+        document.getElementById("b").background = str;
+    </script>
+</body>
+</html>
