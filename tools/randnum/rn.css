@@ -61,7 +61,7 @@ body{
     position: absolute;
     text-align: center;
     border-radius: 20px;
-    background:linear-gradient(-45deg,#ffffff,#f8f8f8);
+    background:linear-gradient(-45deg,#ffffff,#fafafa);
     top:50%;
     right:50%;
     width: 30%;
@@ -109,7 +109,7 @@ body{
 .rbox{
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
-    background:linear-gradient(-45deg,#ffffff,#ebebeb);
+    background:linear-gradient(-45deg,#ffffff,#fafafa);
     height: 50%;
     margin-bottom: 10px;
 }
@@ -117,5 +117,14 @@ body{
     height:40%;
 }
 body{
-    background: linear-gradient(315deg,#ebebeb,#ffffff);
+    background: linear-gradient(315deg,#ebebeb,#fafafa);
+}
+#dapp{
+    border: none;
+    cursor:pointer;
+    background-image: linear-gradient(-45deg,#48c6ef 0%, #c3d66f 100%);
+    width: 260px;
+    height: 50px;
+    color: white;
+    font-size: 20px;
 }
