@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="main.css" type="text/css" rel="stylesheet"/>
     <script src="main.js" type="text/javascript"></script>
-    <script src="jquery-3.6.0.min.js"></script>
+    <script src="lib/jquery-3.6.0.min.js"></script>
     <title>Checker</title>
 </head>
 <body class="">
     <div id = "shell">
         <div id = "main_icon">
-            <img src="head.jpg" onclick="window.location.href = 'https://rogerchen2005.github.io/'">
+            <img src="res/head.jpg" onclick="window.location.href = 'https://rogerchen2005.github.io/'">
             <p>cast1e</p>
         </div>
         <div id = "item">
-            <div id = "item0" class="main_item" onclick="change(0,this);">
+            <div id = "item0" class="main_item" onclick="hasChecked==false?change(0,this):change(5,this);">
                 <div class = "hmask"></div>
                 <div>
                     <embed src="svgs/home.svg"/>
@@ -61,7 +61,7 @@
             <div id = "btn2" class = "btn"></div>
             <div id = "btn3" class = "btn"></div>
         </div> 
-        <iframe id = "UI" src="subsite/cover.html"> 
+        <iframe id = "UI" src="subsite/home.html"> 
         
         </iframe>
     </div>

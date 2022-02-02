@@ -27,7 +27,7 @@ body{
     background-size: cover;
     grid-template-rows: 100%;
     grid-template-columns: var(--sidewide) auto;
-    background-image: url(bg.jpg);
+    background-image: url(res/bg.jpg);
 }
 #blur{
     grid-row: 1/2;
@@ -116,12 +116,11 @@ body{
     z-index: 100;
     grid-row: 1/2;
     grid-column: 2/3;
-    border-radius: 40px;
+    border-radius: 30px;
     border:none;
     left:3%;
     top:3%;
     background-color: rgba(255, 255, 255,0.9);
-    border-radius: 40px;
 }
 #base{
     position: relative;

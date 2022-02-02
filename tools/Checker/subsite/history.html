@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="cover.css" rel="stylesheet" type="text/css">
+    <script src = "../lib/jquery-3.6.0.min.js"></script>
+    <script src="../lib/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="../lib/jquery-ui.css">
+    <script>
+        $( function() {
+            $("#date").datepicker({
+                dateFormat:"yy/mm/dd"
+            });
+        } );
+    </script>
+    </script>
+</head>
+<body>
+    <p>Date:<input type="text" id = "date" class = "s" onclick="showdate()"/></p>
+    <p id = "copyright">PoweRed bY casT1e233</p>
+    <script>
+        showdate();
+    </script>
+</body>
+</html>
