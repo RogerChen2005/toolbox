@@ -5,13 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="cover.css" rel="stylesheet" type="text/css">
+    <link href="check.css" rel="stylesheet" type="text/css">
+    <script src="../lib/jquery-3.6.0.min.js"></script>
+    <script src="../lib/marked.min.js"></script>
 </head>
 <body>
-    <p id = "daytip">Daily Tips:</p>
-    <p id = "maintext">
-        |1
+    <p id = "title">
+        <small>打卡</small><small id = "insert"></small>
+        <input id = "submit" type="button" value="Submit"/>
     </p>
-    <p id = "copyright">PoweRed bY casT1e233</p>
+    <div id = "inputBox">
+        <textarea id = "userInput"></textarea>
+        <div id = "markEd"></div>
+    </div>
+    <script>
+        curDay = new Date();
+        document.getElementById("insert").innerHTML = curDay.toLocaleDateString();
+        let inPut = document.getElementById("userInput");
+        inPut.addEventListener("input",function(){
+            $("#markEd").html(marked.parse(inPut.value));
+        });
+    </script>
 </body>
 </html>

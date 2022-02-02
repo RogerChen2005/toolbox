@@ -13,9 +13,15 @@
     <p id = "maintext">
         |
     </p>
+    <p id = "checkBox">点按钮签到: <input id = "goCheck" type="button" onclick="parent.change(1,parent.window.document.getElementById('item1'))" value="Check"/></p>
     <p id = "copyright">PoweRed bY casT1e233</p>
     <script>
-        var tips = ["卷起来了!","开卷","今天你签到了吗?","今天你卷过别人了吗?","书山有路勤为径"];
+        var tips = [
+            "卷起来了!",
+            "有志者,事竟成",
+            "书山有路勤为径",
+            "学海无涯苦做舟",
+            "书中自有黄金屋"];
         document.getElementById("maintext").innerHTML = tips[Math.floor(Math.random() * tips.length)];
     </script>
 </body>

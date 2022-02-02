@@ -1,0 +1,48 @@
+body{
+    height: 100%;
+    width: 100%;
+    padding-left: 5%;
+}
+#inputBox{
+    background: rgb(255,255,255);
+    border-radius: 10px;
+    width: 90%;
+    height: 70vh;
+    display: flex;
+    flex-direction: row;
+}
+#inputBox textarea{
+    width: 50%;
+    font-size: 20px;
+    font-family: Microsoft YaHei;
+    margin: 10px;
+}
+#inputBox div{
+    width: 50%;
+    text-align: left;
+    margin: 10px;
+    overflow:auto;
+}
+#title{
+    font-size: 80px;
+    margin: 20px 0 20px 0;
+    color: #353535;
+    display: flex;
+    flex-direction: row;
+}
+#submit{
+    margin-left: 10px;
+    width: 250px;
+    height:100px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(-45deg,#a1c4fd,#c2e9fb);
+    transition: .5s;
+    font-size: 60px;
+    color: #353535;
+    cursor: pointer;
+    vertical-align: bottom;
+    margin-left: 30%;
+}#submit:hover{
+    box-shadow: inset 0px 0px 300px rgba(0, 0, 0, 0.23);
+}

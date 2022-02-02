@@ -6,23 +6,44 @@ body{
 #maintext{
     font-size: 130px;
     color:#3e3e3e;
-    line-height: 170px;
     margin: 0;
-    margin-top: 50px;
-    margin-left: 100px;
+    margin-left: 5%;
     padding: 0;
 }
 #daytip{
-    font-size:100px;
+    font-size:70px;
     margin:0;
-    margin-left: 100px;
-    line-height: 100px;
+    margin-left: 5%;
     padding: 0;
     color: #3e3e3e;
 }
 #copyright{
-    font-size: 70px;
-    margin-left: 100px;
-    line-height: 70px;
+    font-size: 40px;
+    margin: 0;
+    margin-top: 20px;
+    margin-left: 5%;
     color: #3e3e3e;
+}
+#goCheck{
+    margin-left: 10px;
+    width: 300px;
+    height:100px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(-45deg,#a1c4fd,#c2e9fb);
+    vertical-align:middle;
+    transition: .5s;
+    font-size: 80%;
+    color: #353535;
+    cursor: pointer;
+}
+#checkBox{
+    font-size: 80px;
+    margin:0;
+    margin-top: 20px;
+    margin-left: 5%;
+    color: #3e3e3e;
+}
+#goCheck:hover{
+    box-shadow: inset 0px 0px 300px rgba(0, 0, 0, 0.23);
 }
