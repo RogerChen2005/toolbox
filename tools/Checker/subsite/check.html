@@ -29,6 +29,12 @@
         <div id = "markEd"></div>
     </div>
     <script>
+        if(parent.localStorage.getItem(parent.curTime) != null){
+            document.getElementById("userInput").value = parent.localStorage[parent.curTime];
+            $("#markEd").html(marked.parse(document.getElementById("userInput").value));
+        }
+    </script>
+    <script>
         curDay = new Date();
         document.getElementById("insert").innerHTML = curDay.toLocaleDateString();
         let inPut = document.getElementById("userInput");

@@ -18,6 +18,7 @@ body{
 }
 #inputBox div{
     width: 50%;
+    font-size: 20px;
     text-align: left;
     margin: 10px;
     overflow:auto;
