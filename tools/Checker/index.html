@@ -41,7 +41,7 @@
                 <div class = "hmask"></div>
                 <div>
                     <embed src="svgs/elipsis.svg"/>
-                    <p>Func</p>
+                    <p>More</p>
                 </div>
             </div>
         </div>
@@ -72,6 +72,9 @@
             hasChecked = true;
             document.getElementById("UI").src = "subsite/"+list[5];
             $("#item0").addClass("cur_display");
+        }
+        if(localStorage.getItem("bg") != null){
+            document.body.style = "background-image: url("+localStorage.getItem("bg")+")";
         }
     </script>
 </body>

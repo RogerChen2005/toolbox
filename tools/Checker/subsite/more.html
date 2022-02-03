@@ -8,8 +8,22 @@
     <link href="more.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <p>友情链接</p>
-    <a href="https://rogerchen2005.github.io/toolbox/">rooger's toolbox</a><br/>
-    <a href="https://rogerchen2005.github.io">个人博客</a>
+    <div id ="link">
+        <p>友情链接</p>
+        <a href="https://rogerchen2005.github.io/toolbox/">rooger's toolbox</a><br/>
+        <a href="https://rogerchen2005.github.io">个人博客</a>
+    </div>
+    <div id = "settings">
+        <p>设置</p>
+        <p>自定义背景图片:<input id = "custom_bg"/><button onclick="
+            parent.localStorage['bg'] = document.getElementById('custom_bg').value;
+            parent.window.location.reload();">
+        保存    
+        </button><button onclick="
+        parent.localStorage.removeItem('bg');
+        parent.window.location.reload();">
+        清除    
+    </button></p>
+    </div>
 </body>
 </html>

@@ -4,6 +4,10 @@
 
 一个打卡网站
 
+可以在这里写下你的每日计划，查询前几日的计划
+
+完全隐私
+
 ## 正文
 
 欢迎来到本站🎉🎉🎉
@@ -16,19 +20,25 @@
 
 累！
 
+2.3 update
+
+写完了，全部由前端代码完成
+
+全站支持Mardown <a href = "https://github.com/younghz/Markdown">Learn</a>
+
 ------
 
 ## information
 
-Last Update : 2022/2/1
+Last Update : 2022/2/3
 
 Author:cast1e
 
 From author:虎年快乐
 
-This document was wrote in Markdown.
+This document was written in Markdown.
 
-Libs use to build this site:
+Libs used to build this site:
 
 ​	1、jQuery 3.6.0
 

@@ -1,11 +1,27 @@
 body{
     margin-left: 5%;
 }
-p{
-    font-size: 70px;
+#link p{
+    font-size: 50px;
     margin: 0;
 }
-a{
-    font-size: 100px;
+#link a{
+    font-size: 50px;
     color: cornflowerblue;
+}
+#settings{
+    font-size: 30px;
+}
+#settings p{
+    margin: 0;
+}
+#settings p input{
+    height: 30px;
+    width: 60%;
+    font-size: 25px;
+}
+#settings p button{
+    height: 30px;
+    width: 5%;
+    vertical-align: middle;
 }
