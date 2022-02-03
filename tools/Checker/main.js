@@ -19,10 +19,10 @@ function getNowFormatDate(){
            return CurrentDate;
 }
 var curTime = getNowFormatDate();
-var dailyTodo = localStorage.getItem("toDo");
-if(!dailyTodo == null){
-    hasChecked = true;
+if(localStorage.getItem("count") == null){
+    localStorage["count"] = 0;
 }
+var dailyTodo = localStorage.getItem(curTime);
 
 function change(index,t){
     $("#UI").animate({opacity:"0"},250,"swing",function(){

@@ -1,0 +1,39 @@
+body{
+    overflow: auto;
+    height: 100%;
+}
+#markEd{
+    overflow: auto;
+    margin:20px;
+    width: 80%;
+    height: 70vh;
+    background-color: rgb(255,255,255);
+    border-radius: 10px;
+    padding-left: 20px;
+}
+#title{
+    font-size: 45px;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+}
+#edit{
+    margin-left: 10px;
+    width: 250px;
+    height:100px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(-45deg,#a1c4fd,#c2e9fb);
+    transition: .5s;
+    font-size: 50px;
+    color: #353535;
+    cursor: pointer;
+    vertical-align: bottom;
+    margin-left: 20%;
+}
+#edit:hover{
+    box-shadow: inset 0px 0px 300px rgba(0, 0, 0, 0.23);
+}
+#title div p{
+    margin:0;
+}

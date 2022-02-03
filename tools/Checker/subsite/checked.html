@@ -5,11 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src = "../lib/jquery-3.6.0.min.js"></script>
+    <script src = "../lib/marked.min.js"></script>
+    <link href="checked.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-    checked
+    <div id = "title">
+        <div>
+            <p>|已完成今日打卡</p>
+            <p>今日任务：</p>
+        </div>
+        <input id = "edit" type="button" value="修改" onclick="parent.change(1,parent.document.getElementById('item1'))"/>
+    </div>
     <div>
         <div id = "markEd"></div>
     </div>
+    <script>
+        $("#markEd").html(marked.parse(parent.localStorage[parent.curTime]));
+    </script>
 </body>
 </html>

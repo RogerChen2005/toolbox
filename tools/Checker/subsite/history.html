@@ -5,22 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="cover.css" rel="stylesheet" type="text/css">
+    <link href="history.css" rel="stylesheet" type="text/css">
     <script src = "../lib/jquery-3.6.0.min.js"></script>
-    <script src="../lib/jquery-ui.min.js"></script>
+    <script src = "../lib/marked.min.js"></script>
+    <script src = "../lib/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="../lib/jquery-ui.css">
     <script>
         $( function() {
             $("#date").datepicker({
-                dateFormat:"yy/mm/dd"
+                dateFormat:"yy/mm/dd",
+                onSelect:show
             });
         } );
     </script>
     </script>
 </head>
 <body>
-    <p>Date:<input type="text" id = "date" class = "s""/></p>
+    <p id = "title">|打卡历史记录</p>
+    <p id = "inPut">Date:<input type="text" id = "date" class = "s"/></p>
     <div id = "markEd"></div>
-    <p id = "copyright">PoweRed bY casT1e233</p>
+    <div id = "count">您已经打卡<small id = "cnt"></small>天</div>
+    <script>
+        function show(){
+            let daTe = document.getElementById("date");
+            if(parent.localStorage.getItem(daTe.value) !=null){
+                $("#markEd").html(marked.parse(parent.localStorage[daTe.value]));
+            }
+            else $("#markEd").html("");
+        }
+        $("#cnt").html(parent.localStorage["count"]);
+    </script>
 </body>
 </html>

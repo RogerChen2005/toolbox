@@ -8,11 +8,21 @@
     <link href="check.css" rel="stylesheet" type="text/css">
     <script src="../lib/jquery-3.6.0.min.js"></script>
     <script src="../lib/marked.min.js"></script>
+    <script>
+        function submit(){
+            if(parent.localStorage.getItem(parent.curTime) == null){
+                parent.localStorage["count"]=parseInt(parent.localStorage["count"])+1;
+            }
+            parent.localStorage[parent.curTime] = document.getElementById("userInput").value;
+            parent.change(5,parent.window.document.getElementById("item0"));
+            parent.hasChecked = true;
+        }
+    </script>
 </head>
 <body>
     <p id = "title">
         <small>打卡</small><small id = "insert"></small>
-        <input id = "submit" type="button" value="Submit"/>
+        <input id = "submit" type="button" value="Submit" onclick="value == ''?alert('不能为空'):submit()"/>
     </p>
     <div id = "inputBox">
         <textarea id = "userInput"></textarea>

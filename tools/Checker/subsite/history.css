@@ -1,0 +1,25 @@
+#title{
+    font-size: 50px;
+    margin: 0;
+}
+#inPut{
+    margin: 0;
+    margin-top: 35px;
+    font-size: 45px;
+}
+#date{
+    height: 45px;
+    font-size: 45px;
+}
+#markEd{
+    overflow: auto;
+    margin:20px;
+    width: 80%;
+    height: 50vh;
+    background-color: rgb(255,255,255);
+    border-radius: 10px;
+    padding-left: 20px;
+}
+#count{
+    font-size: 35px;
+}

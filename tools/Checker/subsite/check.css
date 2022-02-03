@@ -1,6 +1,5 @@
 body{
     height: 100%;
-    width: 100%;
     padding-left: 5%;
 }
 #inputBox{
@@ -43,6 +42,7 @@ body{
     cursor: pointer;
     vertical-align: bottom;
     margin-left: 30%;
-}#submit:hover{
+}
+#submit:hover{
     box-shadow: inset 0px 0px 300px rgba(0, 0, 0, 0.23);
 }

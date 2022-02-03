@@ -23,7 +23,7 @@
                     <p>Home</p>
                 </div>
             </div>
-            <div id = "item1" class="main_item"onclick="change(1,this);">
+            <div id = "item1" class="main_item"onclick="hasChecked==false?change(1,this):change(5,this);">
                 <div class = "hmask"></div>
                 <div>
                     <embed src="svgs/success.svg"/>
@@ -67,5 +67,12 @@
     </div>
     <div id = "base">
     </div>
+    <script>
+        if(dailyTodo != null){
+            hasChecked = true;
+            document.getElementById("UI").src = "subsite/"+list[5];
+            $("#item0").addClass("cur_display");
+        }
+    </script>
 </body>
 </html>
