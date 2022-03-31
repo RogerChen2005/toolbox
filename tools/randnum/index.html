@@ -1,15 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RandNum</title>
+    <title>Document</title>
     <link href="../../ui.css" type="text/css" rel="stylesheet" />
-    <link href="rn.css" type="text/css" rel="stylesheet" />
+    <link href="rd.css" rel="stylesheet" type="text/css"/>
+    <script>
+        var cnt = Array();
+        var max = -1;
+        var running = false;
+        var myVar;
+        temp = 0;
+        function fun(){
+            var numc = document.getElementById("total").value;
+            myVar = setInterval(function () {
+                    temp = Math.random() * numc + 1;
+                    temp = Math.floor(temp);
+                    document.getElementById("shownum").innerText = temp;
+                },50);
+        }
+        function ran(){
+            if(running){
+                running = false;
+                clearInterval(myVar);
+                if(cnt[temp] >= 1){
+                    document.getElementById("is").innerText = "已经被抽到过";
+                    document.getElementById("is").style = "color:red;";
+                    cnt[temp]+= 1;
+                }else{
+                    document.getElementById("is").innerText = "没有被抽到过";
+                    document.getElementById("is").style = "color:black;";
+                    cnt[temp] = 1
+                }
+                document.getElementById("history").innerHTML += temp;
+                document.getElementById("history").innerHTML += " ";
+                t = parseInt(cnt[temp]);
+                if(t > max){
+                    max = t;
+                    document.getElementById("luckiest").innerHTML = temp+"是最幸运的，被抽到了"+cnt[temp]+"次";
+                }
+                else if (t == max){
+                    var tmp = document.getElementById("luckiest").innerHTML;
+                    document.getElementById("luckiest").innerHTML = temp + " " + tmp
+                }
+            }
+            else{
+                running = true;
+                fun();
+            }
+        }
+    </script>
 </head>
-
 <body>
     <div id="head">
         <span class="topele">
@@ -25,72 +68,66 @@
             <a class="toptext" href="../../about.html">about me</a>
         </span>
     </div>
-    <div style="
-    font-size: 20px;
-    position: absolute;
-    margin-left: 50px;
-    margin-top: 20px;
-    margin-bottom: 0;
-    color :darkgray;
-    z-index: 1000;
-    animation: t 1s;
-    ">
+    <div id = "ad">
     More Functions,More Portable 
     <button id = "dapp"
     type="button"
     onclick="window.location.href='https://filedropper.com/d/s/MFveTUJOyvd1yJmYOR43YPT2dvcrib'"
     >Download Desktop App</button>
     </div>
-    <script>
-        var cnt = Array();
-        var max = -1;
-        function ran(){
-            var temp = Math.random() * 45 + 1;
-            temp = Math.floor(temp);
-            if(cnt[temp] >= 1){
-                document.getElementById("is").innerText = "已经被抽到过";
-                document.getElementById("is").style = "color:red;";
-                cnt[temp]+= 1;
-            }else{
-                document.getElementById("is").innerText = "没有被抽到过";
-                document.getElementById("is").style = "color:black;";
-                cnt[temp] = 1
-            }
-            document.getElementById("show").innerText = temp;
-            document.getElementById("history").innerHTML += temp;
-            document.getElementById("history").innerHTML += " ";
-            for(var i = 1;i<=45;i++){
-                t = parseInt(cnt[i]);
-                if(t > max){
-                    max = t;
-                    document.getElementById("luckiest").innerHTML = i+"是最幸运的，被抽到了"+cnt[i]+"次";
-                }
-            }
-        }
-    </script>
-    <div style="animation: t 1s;position: absolute;width:100%;height: 80%;">
-        <div id = "left">
-            <p style="height: 10%;"></p>
-            <p id = "show">0</p>
-            <button id = "btn" onclick="ran()">Click to Random</button>
-            <p id = "is"></p>
-        </div>
-        <div id = "right" sytle = "height:40%">
-            <div class = "rbox">
-                <p style="height: 5%;"></p>
-                <p id = "hstext" class = "rele">History:</p>
-                <p id = "history" class = "rele" style="margin:0;font-size:40px;width: 500px;"> </p>
+    <div id = "mask" class = "main-window">
+    </div>
+    <div id = "cover" class = "main-window">
+        <div id = "show" class = "sub-window">
+            <div id = "num" class = "container">
+                <div class = "side-bar">
+                    Random
+                </div>
+                <div class="text">
+                    <div id = "shownum">
+                        0
+                    </div>
+                </div>
             </div>
-            <div class = "rbox">
-                <p style="height: 5%;"></p>
-                <p id = "hstext" class = "rele">Luckiest:</p>
-                <p id = "luckiest" class = "rele"> </p>
+            <div id = button class = "container">
+                <div class = "side-bar">
+                    Button
+                </div>
+                <div class = "text">
+                    <button id = "btn" onclick="ran()">Click to Random</button>
+                </div>
+            </div>
+            <div id = "settings" class = "container">
+                <div class = "side-bar">
+                    Settings
+                </div>
+                <div id = "settings-right">
+                    <div>
+                        总人数:<br/>
+                        <input id = "total"/>
+                    </div>
+                    <div id = "is">没有被抽到过</div>
+                </div>
+            </div>
+        </div>
+        <div id = "bottomWindow" class = "sub-window">
+            <div id = "history" class = "container">
+                <div class = "side-bar">
+                    History
+                </div>
+            </div>
+            <div id = "luck" class = "container">
+                <div class = "side-bar">
+                    Luckiest
+                </div>
+                <div id = "luckiest">
+
+                </div>
             </div>
         </div>
     </div>
     <script>
-        ran();
+        document.getElementById("total").value = 45;
     </script>
 </body>
-
 </html>
