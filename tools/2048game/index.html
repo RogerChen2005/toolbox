@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0">
+    <title>2048 Web</title>
+    <link href = "../../ui.css" type = "text/css" rel = "stylesheet" />
+    <style>
+        @keyframes anime{
+            0%{
+                transform: translate(-50%,0%);
+            }
+            100%{
+                transform: translate(-50%,-50%);
+            }
+        }
+        body{
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+        #main_win {
+            padding: 8px;
+            border-radius: 5px;
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #bbada0;
+            display: grid;
+            grid-template-columns: 25% 25% 25% 25%;
+            grid-template-rows: 25% 25% 25% 25%;
+            transition: .2s;
+            overflow: hidden;
+            animation: anime 1s;
+        }
+
+        .node {
+            border-radius: 5px;
+            margin: 7px;
+            background-color: azure;
+            text-align: center;
+            font-size: 60px;
+            font-weight: 700;
+            transition: .2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: #776e65;
+        }
+
+        .space_holder {
+            border-radius: 3px;
+            margin: 7px;
+            background-color: rgba(238, 228, 218, 0.35);
+            text-align: center;
+            font-size: 80px;
+        }
+
+        .dialog {
+            border-radius: 5px;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.09);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            text-align: center;
+            font-size: 100px;
+            color: white;
+            transition: .2s;
+            flex-direction: column;
+        }
+
+        .f_btn {
+            width: 160px;
+            height: 80px;
+            background-color: aliceblue;
+            color: black;
+            border-radius: 10px;
+            border: none;
+            font-size: 35px;
+            transition: .5s;
+        }
+
+        .f_btn:hover {
+            cursor: pointer;
+            box-shadow: inset 1000px 1000px rgba(0, 0, 0, 0.14);
+        }
+    </style>
+</head>
+
+<body>
+    <div id = "head">
+        <span class = "topele" >
+            <a id = "mainico" class = "toptext" href="../../index.html">rooger's toolbox</a>
+        </span>
+        <span class = "topele">
+            <a  class = "toptext" href="../../index.html">main</a>
+        </span>
+        <span class = "topele">
+            <a class = "toptext" href="../../list.html">tool list</a>
+        </span>
+        <span class = "topele">
+            <a class = "toptext" href="../../about.html">about me</a>
+        </span>
+    </div>
+    <div id="main_win">
+    </div>
+    <script>
+        var color = {
+            "2": "#eee4da",
+            "4": "#eee1c9",
+            "8": "#f3b27a",
+            "16": "#f69664",
+            "32": "#f77c5f",
+            "64": "#f75f3b",
+            "128": "#edd073",
+            "256": "#edcc62",
+            "512": "#edc950",
+            "1024": "indianred",
+            "2048": "darkkhaki"
+        }
+        var data = new Array(16).fill(undefined);
+        var fail_win = undefined;
+        var free_block = 16;
+        var winned = false;
+
+        function pos(r, c) {
+            return (r - 1) * 4 + c - 1;
+        }
+
+        function find_place() {
+            let cnt = randint(1, free_block);
+            let i = 0;
+            while (cnt > 0) {
+                if (i == 16) {
+                    return -1;
+                }
+                if (data[i] == undefined) {
+                    cnt--;
+                }
+                i++;
+            }
+            return i - 1;
+        }
+
+        function add_block(row, col, val) {
+            let node = document.createElement("div");
+            node.className += "node";
+            node.innerText = val;
+            node.style.gridColumn = col;
+            node.style.gridRow = row;
+            node.style.backgroundColor = color[val.toString()];
+            document.getElementById("main_win").appendChild(node);
+            data[pos(row, col)] = node;
+            free_block--;
+        }
+
+        function insert_block() {
+            let position = find_place();
+            add_block(Math.floor(position / 4) + 1, position % 4 + 1, 2 + 2 * randint(0, 1));
+            if (free_block == 0) {
+                for (let row = 1; row <= 4; row++) {
+                    for (let cur = pos(row, 1); cur <= pos(row, 3); cur++) {
+                        if (data[cur].innerText == data[cur + 1].innerText) {
+                            return;
+                        }
+                    }
+                }
+                for (let col = 1; col <= 4; col++) {
+                    for (let cur = pos(1, col); cur <= pos(3, col); cur += 4) {
+                        if (data[cur].innerText == data[cur + 4].innerText) {
+                            return;
+                        }
+                    }
+                }
+                Fail();
+            }
+        }
+
+        function Fail() {
+            fail_win = document.createElement("div");
+            fail_win.className += "dialog";
+            fail_win.innerHTML = "Failed<button class = \"f_btn\" onclick=\"init()\">Reset</button>";
+            document.getElementById("main_win").appendChild(fail_win);
+        }
+
+        function Win() {
+            fail_win = document.createElement("div");
+            fail_win.className += "dialog";
+            fail_win.innerHTML = "You Win!<button class = \"f_btn\" onclick=\"fail_win.remove();fail_win = undefined;\">Continue</button>";
+            document.getElementById("main_win").appendChild(fail_win);
+        }
+
+        function init() {
+            if (data != undefined) {
+                for (let i = 0; i < 16; i++) {
+                    if (data[i] != undefined) {
+                        data[i].remove();
+                        data[i] = undefined;
+                    }
+                }
+            }
+            if (fail_win != undefined) {
+                fail_win.remove();
+                fail_win = undefined;
+            }
+            free_block = 16;
+            for (let i = 0; i < 2; i++) {
+                insert_block();
+            }
+        }
+
+        function randint(a, b) {
+            let seed = Math.floor(Math.random() * (b - a + 1) + a);
+            return seed;
+        }
+
+        function add_holder() {
+            let main_win = document.getElementById("main_win");
+            for (let i = 0; i < 16; i++) {
+                let node = document.createElement("div");
+                node.className += "space_holder";
+                node.style.gridColumn = i % 4 + 1;
+                node.style.gridRow = Math.floor(i / 4) + 1;
+                main_win.appendChild(node);
+            }
+        }
+
+        function change(node) {
+            let new_val = parseInt(node.innerText) * 2;
+            node.innerText = (new_val).toString();
+            if (new_val >= 100) {
+                node.style.fontSize = "45px";
+                if (new_val == 2048 && winned == false) {
+                    winned = true;
+                    Win();
+                }
+            }
+            node.style.backgroundColor = color[node.innerText];
+            node.style.color = (new_val > 4) ? "#f9f6f2" : "#776e65";
+        }
+
+        function row_animate(node, st, ed, callback) {
+            node.animate([
+                { transform: "translateX(" + (125) * (ed - st) + "px)" }],
+                {
+                    duration: 100,
+                    iterations: 1,
+                    easing: "ease-in-out"
+                })
+            setTimeout(() => { callback(node, ed); }, 90);
+        }
+
+        function col_animate(node, st, ed, callback) {
+            node.animate([
+                { transform: "translateY(" + (125) * (ed - st) + "px)" }],
+                {
+                    duration: 100,
+                    iterations: 1,
+                    easing: "ease-in-out"
+                })
+            setTimeout(() => { callback(node, ed); }, 90);
+        }
+
+
+
+        function row_slide_left() {
+            let flag = false;
+            for (let row = 1; row <= 4; row++) {
+                let cur = 1;
+                for (let col = 2; col <= 4; col++) {
+                    if (data[pos(row, col)] == undefined) {
+                        continue;
+                    }
+                    if (data[pos(row, cur)] == undefined) {
+                        data[pos(row, cur)] = data[pos(row, col)];
+                        data[pos(row, col)] = undefined;
+                        row_animate(data[pos(row, cur)], col, cur, (node, ed) => { node.style.gridColumn = ed; });
+                        flag = true;
+                    }
+                    else if (data[pos(row, cur)].innerText == data[pos(row, col)].innerText) {
+                        change(data[pos(row, cur)]);
+                        row_animate(data[pos(row, col)], col, cur, (node, ed) => { node.remove(); });
+                        data[pos(row, col)] = undefined;
+                        free_block++;
+                        flag = true;
+                        cur += 1;
+                    }
+                    else {
+                        if (cur + 1 != col) {
+                            data[pos(row, cur + 1)] = data[pos(row, col)];
+                            data[pos(row, col)] = undefined;
+                            row_animate(data[pos(row, cur + 1)], col, cur + 1, (node, ed) => { node.style.gridColumn = ed; });
+                            flag = true;
+                        }
+                        cur += 1;
+                    }
+                }
+            }
+            if (flag == true) {
+                insert_block();
+            }
+        }
+
+        function row_slide_right() {
+            let flag = false;
+            for (let row = 4; row >= 1; row--) {
+                let cur = 4;
+                for (let col = 3; col >= 1; col--) {
+                    if (data[pos(row, col)] == undefined) {
+                        continue;
+                    }
+                    if (data[pos(row, cur)] == undefined) {
+                        data[pos(row, cur)] = data[pos(row, col)];
+                        data[pos(row, col)] = undefined;
+                        row_animate(data[pos(row, cur)], col, cur, (node, ed) => { node.style.gridColumn = ed; });
+                        flag = true;
+                    }
+                    else if (data[pos(row, cur)].innerText == data[pos(row, col)].innerText) {
+                        change(data[pos(row, cur)]);
+                        row_animate(data[pos(row, col)], col, cur, (node, ed) => { node.remove(); });
+                        data[pos(row, col)] = undefined;
+                        free_block++;
+                        flag = true;
+                        cur -= 1;
+                    }
+                    else {
+                        if (cur - 1 != col) {
+                            data[pos(row, cur - 1)] = data[pos(row, col)];
+                            data[pos(row, col)] = undefined;
+                            row_animate(data[pos(row, cur - 1)], col, cur - 1, (node, ed) => { node.style.gridColumn = ed; });
+                            flag = true;
+                        }
+                        cur -= 1;
+                    }
+                }
+            }
+            if (flag == true) {
+                insert_block();
+            }
+        }
+
+        function col_slide_up() {
+            let flag = false;
+            for (let col = 1; col <= 4; col++) {
+                let cur = 1;
+                for (let row = 2; row <= 4; row++) {
+                    if (data[pos(row, col)] == undefined) {
+                        continue;
+                    }
+                    if (data[pos(cur, col)] == undefined) {
+                        data[pos(cur, col)] = data[pos(row, col)];
+                        data[pos(row, col)] = undefined;
+                        col_animate(data[pos(cur, col)], row, cur, (node, ed) => { node.style.gridRow = ed; });
+                        flag = true;
+                    }
+                    else if (data[pos(cur, col)].innerText == data[pos(row, col)].innerText) {
+                        change(data[pos(cur, col)]);
+                        col_animate(data[pos(row, col)], row, cur, (node, ed) => { node.remove(); });
+                        data[pos(row, col)] = undefined;
+                        free_block++;
+                        flag = true;
+                        cur += 1;
+                    }
+                    else {
+                        if (cur + 1 != row) {
+                            data[pos(cur + 1, col)] = data[pos(row, col)];
+                            data[pos(row, col)] = undefined;
+                            col_animate(data[pos(cur + 1, col)], row, cur + 1, (node, ed) => { node.style.gridRow = ed; });
+                            flag = true;
+                        }
+                        cur += 1;
+                    }
+                }
+            }
+            if (flag == true) {
+                insert_block();
+            }
+        }
+
+        function col_slide_down() {
+            let flag = false;
+            for (let col = 4; col >= 1; col--) {
+                let cur = 4;
+                for (let row = 3; row >= 1; row--) {
+                    if (data[pos(row, col)] == undefined) {
+                        continue;
+                    }
+                    if (data[pos(cur, col)] == undefined) {
+                        data[pos(cur, col)] = data[pos(row, col)];
+                        data[pos(row, col)] = undefined;
+                        col_animate(data[pos(cur, col)], row, cur, (node, ed) => { node.style.gridRow = ed; });
+                        flag = true;
+                    }
+                    else if (data[pos(cur, col)].innerText == data[pos(row, col)].innerText) {
+                        change(data[pos(cur, col)]);
+                        col_animate(data[pos(row, col)], row, cur, (node, ed) => { node.remove(); });
+                        data[pos(row, col)] = undefined;
+                        free_block++;
+                        flag = true;
+                        cur -= 1;
+                    }
+                    else {
+                        if (cur - 1 != row) {
+                            data[pos(cur - 1, col)] = data[pos(row, col)];
+                            data[pos(row, col)] = undefined;
+                            col_animate(data[pos(cur - 1, col)], row, cur - 1, (node, ed) => { node.style.gridRow = ed; });
+                            flag = true;
+                        }
+                        cur -= 1;
+                    }
+                }
+            }
+            if (flag == true) {
+                insert_block();
+            }
+        }
+
+        window.onload = () => {
+            add_holder();
+            init();
+        }
+
+        document.addEventListener('keyup', (event) => {
+            var name = event.key;
+            var code = event.code;
+            switch (code) {
+                case "ArrowUp":
+                    col_slide_up()
+                    break;
+                case "ArrowDown":
+                    col_slide_down()
+                    break;
+                case "ArrowLeft":
+                    row_slide_left()
+                    break;
+                case "ArrowRight":
+                    row_slide_right()
+                    break;
+                case "KeyW":
+                    col_slide_up()
+                    break;
+                case "KeyS":
+                    col_slide_down()
+                    break;
+                case "KeyA":
+                    row_slide_left()
+                    break;
+                case "KeyD":
+                    row_slide_right()
+                    break;
+            }
+        }, false);
+    </script>
+</body>
+
+</html>
