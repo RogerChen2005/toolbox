@@ -1,0 +1,119 @@
+@keyframes msg {
+    0% {
+        transform: translate(100%, -50%);
+    }
+
+    100% {
+        transform: translate(-50%, -50%);
+    }
+}
+
+@media screen and (min-width: 600px) {
+    #side_win {
+        position: absolute;
+        width: 200px;
+        height: 80%;
+        left: 0;
+        top: 50%;
+        transform: translate(-80%, -50%);
+        border-radius: 0 5px 5px 0;
+        background-color: #fff6e9;
+        /* backdrop-filter: blur(20px);
+        webkit-backdrop-filter: blur(20px); */
+        transition: .3s ease-in-out;
+        padding: 10px;
+        padding-left: 20px;
+        padding-top: 5%;
+        display: flex;
+        flex-direction: column;
+        justify-content:flex-start;
+        align-items: left;
+    }
+
+    #side_win::before {
+        content: ">";
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin-right: 10px;
+        color: rgb(123, 123, 123);
+        font-size: 40px;
+        font-weight: 900;
+    }
+
+    #side_win:hover {
+        transform: translate(0%, -50%);
+    }
+}
+
+#side_win{
+    font-family: "PingFangSC", "SFPro"; 
+    color: #776e65;
+}
+
+#side_win p{
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+#side_win h1{
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+.MessageBox {
+    border-radius: 10px;
+    min-width: 60%;
+    min-height: 30%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f4e2d080;
+    backdrop-filter: blur(20px);
+    webkit-backdrop-filter: blur(20px);
+    transition: .2s;
+    overflow: hidden;
+    animation: msg cubic-bezier(0.55, 0.09, 0.25, 1.14).5s;
+    padding: 20px;
+    font-size: 30px;
+    font-family: "PingFangSC", "SFPro";
+    color: rgb(99, 95, 85);
+    transition: .5s ease-in;
+}
+
+.MessageBox p {
+    font-size: 45px;
+    margin: 0;
+    font-weight: 800;
+}
+
+.MessageBox .closeBtn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-right: 15px;
+    line-height: 50px;
+    color: rgb(123, 123, 123);
+    font-size: 50px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.side_btn{
+    border: none;
+    border-radius: 10px;
+    width: 80%;
+    min-height: 50px;
+    margin-top: 30px;
+    font-size: 20px;
+    font-family: "PingFangSC", "SFPro";
+    background-color: #ffefd9;
+    cursor: pointer;
+    font-weight: 700;
+    color: #776e65;
+}
