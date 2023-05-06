@@ -12,11 +12,11 @@ var color = {
     "2048": "rgb(237, 194, 46)"
 }
 var data = new Array(16).fill(undefined);
-var fail_win = undefined,move_val = undefined,max_val=undefined;
+var fail_win = undefined, move_val = undefined, max_val = undefined;
 var free_block = 16;
 var winned = false;
 var space = 0;
-var max_value=0,total_move=0;
+var max_value = 0, total_move = 0;
 
 function pos(r, c) {
     return (r - 1) * 4 + c - 1;
@@ -121,7 +121,7 @@ function add_holder() {
 
 function change(node) {
     let new_val = parseInt(node.innerText) * 2;
-    if( new_val > parseInt(max_value)){
+    if (new_val > parseInt(max_value)) {
         record_max_value(new_val);
     }
     node.innerText = (new_val).toString();
@@ -132,16 +132,16 @@ function change(node) {
             Win();
         }
     }
-    if(new_val<=2048){
+    if (new_val <= 2048) {
         node.style.backgroundColor = color[node.innerText];
     }
-    else{
+    else {
         node.style.backgroundColor = "black";
     }
     node.style.color = (new_val > 4) ? "#f9f6f2" : "#776e65";
 }
 
-function row_animate(node, row,ed, callback) {
+function row_animate(node, row, ed, callback) {
     if (typeof callback == "function") {
         setTimeout(() => { callback(node); }, 100);
     }
@@ -156,12 +156,12 @@ function col_animate(node, col, ed, callback) {
     node.style.transform = "translate(" + space * (col - 1) + "px," + space * (ed - 1) + "px)";
 }
 
-function count_move(){
-    total_move+=1;
+function count_move() {
+    total_move += 1;
     move_val.innerText = total_move.toString();
 }
 
-function record_max_value(new_val){
+function record_max_value(new_val) {
     max_value = new_val;
     max_val.innerText = max_value.toString();
 }
@@ -177,7 +177,7 @@ function row_slide_left() {
             if (data[pos(row, cur)] == undefined) {
                 data[pos(row, cur)] = data[pos(row, col)];
                 data[pos(row, col)] = undefined;
-                row_animate(data[pos(row, cur)], row,cur);
+                row_animate(data[pos(row, cur)], row, cur);
                 flag = true;
             }
             else if (data[pos(row, cur)].innerText == data[pos(row, col)].innerText) {
@@ -192,7 +192,7 @@ function row_slide_left() {
                 if (cur + 1 != col) {
                     data[pos(row, cur + 1)] = data[pos(row, col)];
                     data[pos(row, col)] = undefined;
-                    row_animate(data[pos(row, cur + 1)], row,  cur + 1);
+                    row_animate(data[pos(row, cur + 1)], row, cur + 1);
                     flag = true;
                 }
                 cur += 1;
@@ -221,7 +221,7 @@ function row_slide_right() {
             }
             else if (data[pos(row, cur)].innerText == data[pos(row, col)].innerText) {
                 change(data[pos(row, cur)]);
-                row_animate(data[pos(row, col)], row,  cur, (node) => { node.remove(); });
+                row_animate(data[pos(row, col)], row, cur, (node) => { node.remove(); });
                 data[pos(row, col)] = undefined;
                 free_block++;
                 flag = true;
@@ -231,7 +231,7 @@ function row_slide_right() {
                 if (cur - 1 != col) {
                     data[pos(row, cur - 1)] = data[pos(row, col)];
                     data[pos(row, col)] = undefined;
-                    row_animate(data[pos(row, cur - 1)], row,  cur - 1);
+                    row_animate(data[pos(row, cur - 1)], row, cur - 1);
                     flag = true;
                 }
                 cur -= 1;
@@ -260,7 +260,7 @@ function col_slide_up() {
             }
             else if (data[pos(cur, col)].innerText == data[pos(row, col)].innerText) {
                 change(data[pos(cur, col)]);
-                col_animate(data[pos(row, col)], col,  cur, (node) => { node.remove(); });
+                col_animate(data[pos(row, col)], col, cur, (node) => { node.remove(); });
                 data[pos(row, col)] = undefined;
                 free_block++;
                 flag = true;
@@ -294,7 +294,7 @@ function col_slide_down() {
             if (data[pos(cur, col)] == undefined) {
                 data[pos(cur, col)] = data[pos(row, col)];
                 data[pos(row, col)] = undefined;
-                col_animate(data[pos(cur, col)], col,  cur);
+                col_animate(data[pos(cur, col)], col, cur);
                 flag = true;
             }
             else if (data[pos(cur, col)].innerText == data[pos(row, col)].innerText) {
@@ -309,7 +309,7 @@ function col_slide_down() {
                 if (cur - 1 != row) {
                     data[pos(cur - 1, col)] = data[pos(row, col)];
                     data[pos(row, col)] = undefined;
-                    col_animate(data[pos(cur - 1, col)], col,  cur - 1);
+                    col_animate(data[pos(cur - 1, col)], col, cur - 1);
                     flag = true;
                 }
                 cur -= 1;
@@ -327,18 +327,18 @@ let size = Math.floor(Math.min(document.body.offsetHeight, document.body.offsetW
 main_window.style.width = size.toString() + "px";
 main_window.style.height = size.toString() + "px";
 
-function get_data(){
+function get_data() {
     max_val = document.getElementById("max_value");
     move_val = document.getElementById("total_move");
     let tmp = localStorage.getItem("max_value");
-    max_value = tmp == null?0:parseInt(tmp);
+    max_value = tmp == null ? 0 : parseInt(tmp);
     max_val.innerText = max_value.toString();
     tmp = localStorage.getItem("total_move");
-    total_move = tmp == null?0:parseInt(tmp);
+    total_move = tmp == null ? 0 : parseInt(tmp);
     move_val.innerText = total_move.toString();
 }
 
-function remove_data(){
+function remove_data() {
     localStorage.removeItem("max_value");
     max_val.innerText = "0";
     move_val.innerText = "0";
@@ -355,7 +355,7 @@ window.onload = () => {
     init();
 }
 
-window.onbeforeunload = () =>{
+window.onbeforeunload = () => {
     localStorage["max_value"] = max_value.toString();
     localStorage["total_move"] = total_move.toString();
 }

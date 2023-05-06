@@ -20,3 +20,15 @@ function closeMsg() {
 function about() {
     message("<p>开发者 : cast1e</p><br/>在学校用“课余时间”开发的2048小游戏，<br/>动画和配色上尽可能进行了还原，<br/>Have fun!<br/>");
 }
+
+let show = false;
+function open_tab(){
+    if(show){
+        document.getElementById("side_win").style.transform = "translateX(-100%)";
+        show = false;
+    }
+    else{
+        document.getElementById("side_win").style.transform = "translateX(0%)";
+        show = true;
+    }
+}

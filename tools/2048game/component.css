@@ -18,8 +18,6 @@
         transform: translate(-80%, -50%);
         border-radius: 0 5px 5px 0;
         background-color: #fff6e9;
-        /* backdrop-filter: blur(20px);
-        webkit-backdrop-filter: blur(20px); */
         transition: .3s ease-in-out;
         padding: 10px;
         padding-left: 20px;
@@ -28,6 +26,11 @@
         flex-direction: column;
         justify-content:flex-start;
         align-items: left;
+        overflow-y:scroll;
+    }
+
+    #side_win::-webkit-scrollbar{
+        display: none;
     }
 
     #side_win::before {
@@ -44,11 +47,52 @@
     #side_win:hover {
         transform: translate(0%, -50%);
     }
+
+    .open_tab{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #side_win {
+        position: absolute;
+        width: 220px;
+        height: 72%;
+        left: 0;
+        bottom: 10%;
+        overflow: scroll;
+        transform: translateX(-100%);
+        border-radius: 0 5px 5px 0;
+        background-color: #fff6e9;
+        transition: .3s ease-in-out;
+        padding-left: 20px;
+        padding-top: 5%;
+        display: flex;
+        flex-direction: column;
+        justify-content:flex-start;
+        align-items: left;
+    }
+
+    .open_tab{
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        border: none;
+        border-radius: 60px;
+        width: 60px;
+        height: 60px;
+        font-size: 30px;
+        font-family: "SFPro";
+        background-color: #ffefd9;
+        font-weight: 900;
+        color: #776e65;
+    }
 }
 
 #side_win{
     font-family: "PingFangSC", "SFPro"; 
     color: #776e65;
+    touch-action: none;
 }
 
 #side_win p{
@@ -66,6 +110,7 @@
 }
 
 .MessageBox {
+    touch-action: none;
     border-radius: 10px;
     min-width: 60%;
     min-height: 30%;
