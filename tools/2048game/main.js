@@ -340,6 +340,8 @@ function get_data(){
 
 function remove_data(){
     localStorage.removeItem("max_value");
+    max_val.innerText = "0";
+    move_val.innerText = "0";
     localStorage.removeItem("total_move");
     max_value = 0;
     total_move = 0;
