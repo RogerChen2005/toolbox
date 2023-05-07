@@ -131,7 +131,6 @@
 #side_win {
     font-family: "PingFangSC", "SFPro";
     color: #776e65;
-    touch-action: none;
 }
 
 #side_win p {
