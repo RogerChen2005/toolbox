@@ -97,6 +97,7 @@ body {
     grid-column: 1;
     grid-row: 1;
     transition: .1s;
+    font-family: "SFPro";
 }
 
 .space_holder {
