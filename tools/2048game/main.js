@@ -15,7 +15,7 @@ var data = new Array(16).fill(undefined);
 var fail_win = undefined, move_val = undefined, max_val = undefined;
 var free_block = 16;
 var winned = false;
-var space = 0;
+var space = 0,prob = 50;
 var max_value = 0, total_move = 0;
 
 function pos(r, c) {
@@ -50,7 +50,7 @@ function add_block(row, col, val) {
 
 function insert_block() {
     let position = find_place();
-    add_block(Math.floor(position / 4) + 1, position % 4 + 1, 2 + 2 * randint(0, 1));
+    add_block(Math.floor(position / 4) + 1, position % 4 + 1,TwoOrFour(prob));
     if (free_block == 0) {
         for (let row = 1; row <= 4; row++) {
             for (let cur = pos(row, 1); cur <= pos(row, 3); cur++) {
@@ -68,6 +68,14 @@ function insert_block() {
         }
         Fail();
     }
+}
+
+function TwoOrFour(prob){ // Prob / 100 = P(4)
+    let seed = randint(1,100);
+    if(seed <= prob){
+        return 4;
+    }
+    else return 2;
 }
 
 function Fail() {
@@ -330,21 +338,31 @@ main_window.style.height = size.toString() + "px";
 function get_data() {
     max_val = document.getElementById("max_value");
     move_val = document.getElementById("total_move");
+
     let tmp = localStorage.getItem("max_value");
     max_value = tmp == null ? 0 : parseInt(tmp);
-    max_val.innerText = max_value.toString();
+    
     tmp = localStorage.getItem("total_move");
     total_move = tmp == null ? 0 : parseInt(tmp);
+
+    max_val.innerText = max_value.toString();
     move_val.innerText = total_move.toString();
+
+    tmp = localStorage.getItem("prob");
+    prob = tmp == null || parseInt(tmp) > 100? 50 : parseInt(tmp);
 }
 
 function remove_data() {
     localStorage.removeItem("max_value");
+    localStorage.removeItem("total_move");
+    localStorage.removeItem("prob");
+
     max_val.innerText = "0";
     move_val.innerText = "0";
-    localStorage.removeItem("total_move");
+    
     max_value = 0;
     total_move = 0;
+    prob = 50;
     message("<p>数据已经全部清除！</p>");
 }
 
@@ -358,6 +376,7 @@ window.onload = () => {
 window.onbeforeunload = () => {
     localStorage["max_value"] = max_value.toString();
     localStorage["total_move"] = total_move.toString();
+    localStorage["prob"] = prob.toString();
 }
 
 function getAbsoluteHeight(el) {
@@ -368,7 +387,6 @@ function getAbsoluteHeight(el) {
 }
 
 document.addEventListener('keyup', (event) => {
-    var name = event.key;
     var code = event.code;
     switch (code) {
         case "ArrowUp":

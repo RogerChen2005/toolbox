@@ -13,7 +13,7 @@ function message(innerHTML) {
 function closeMsg() {
     if (msg != undefined) {
         msg.style.transform = "translate(100%,-50%)";
-        setTimeout(() => { msg.remove();msg = undefined}, 500);
+        setTimeout(() => { msg.remove(); msg = undefined }, 500);
     }
 }
 
@@ -22,13 +22,27 @@ function about() {
 }
 
 let show = false;
-function open_tab(){
-    if(show){
+function open_tab() {
+    if (show) {
         document.getElementById("side_win").style.transform = "translateX(-100%)";
         show = false;
     }
-    else{
+    else {
         document.getElementById("side_win").style.transform = "translateX(0%)";
         show = true;
     }
 }
+
+function change_prob() {
+    message("<p>|更改4出现的概率(百分比)</p><label class=\"prob_label\" for=\"prob\">0</label><input type=\"range\" lable=\"prob\" id=\"prob\" min=\"0\" max=\"100\"><label class=\"prob_label\"  for=\"prob\">100</label><p>当前概率:<label id = \"prob_val\">50</label>%</p>");
+    let slide = document.getElementById("prob");
+    let prob_val = document.getElementById("prob_val")
+    slide.value = prob.toString();
+    prob_val.innerText = prob.toString();
+    slide.addEventListener("input", (e) => {
+        let val = e.target.value;
+        prob_val.innerText = val;
+        prob = parseInt(val);
+    });
+}
+

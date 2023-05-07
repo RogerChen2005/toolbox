@@ -22,17 +22,6 @@ body {
     background-color: #fffbf4;
 }
 
-
-/* @keyframes anime {
-    0% {
-        transform: translate(-50%, 0%);
-    }
-
-    100% {
-        transform: translate(-50%, -50%);
-    }
-} */
-
 @keyframes opacity {
     0% {
         opacity: 0%;
@@ -93,7 +82,6 @@ body {
     grid-template-rows: 25% 25% 25% 25%;
     transition: .2s;
     overflow: hidden;
-    /* animation: anime forwards 1s; */
 }
 
 .node {
@@ -118,30 +106,12 @@ body {
     font-size: 80px;
 }
 
-.dialog {
-    animation: opacity ease-in .5s;
-    border-radius: 5px;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.09);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    text-align: center;
-    font-size: 100px;
-    color: white;
-    transition: .2s;
-    flex-direction: column;
-}
-
 .f_btn {
+    margin-top: 20px;
     width: 160px;
     height: 80px;
-    background-color: aliceblue;
-    color: black;
+    background-color:#ffeddc;
+    color: #776e65;;
     border-radius: 10px;
     border: none;
     font-size: 35px;
