@@ -332,6 +332,7 @@ function col_slide_down() {
 
 let main_window = document.getElementById("main_win");
 let size = Math.floor(Math.min(document.body.offsetHeight, document.body.offsetWidth) * 0.8);
+size = size - size % 4;
 main_window.style.width = size.toString() + "px";
 main_window.style.height = size.toString() + "px";
 
