@@ -8,13 +8,19 @@
 }
 #head{
     animation: animate 1s;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center
 }
 .topele{
     text-align: center;
+    line-height: 35px;
     font-size: 20px;
     margin-right: 50px;
     margin-left: 20px;
     transition: 0.5s;
+    cursor: pointer;
 }
 .topele:hover{
     font-size: 23px;

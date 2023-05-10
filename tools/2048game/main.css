@@ -1,11 +1,11 @@
 @font-face {
     font-family: "PingFangSC";
-    src: url("../../assessts/PingFangSC-Regular.woff2");
+    src: url("../../assessts/font/PingFangSC-Regular.woff2");
 }
 
 @font-face {
     font-family: "SFPro";
-    src: url("../../assessts/sf-pro-text_regular.woff2");
+    src: url("../../assessts/font/sf-pro-text_regular.woff2");
 }
 
 html {
