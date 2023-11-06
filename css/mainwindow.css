@@ -1,0 +1,52 @@
+@keyframes tran{
+    0%{
+        transform: translate(-50%,0%);
+    }
+    100%{
+        transform: translate(-50%,-50%);
+    }
+}
+body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+#midico{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    animation: tran 1s;
+}
+#image{
+    transform: scale(0.6);
+    transition: 0.8s;
+    margin: 0px;
+    border: 0px;
+}
+#image:hover{
+    transform: scale(0.75);
+}
+#intro{
+    margin: 0px;
+    border: 0px;
+    transform:translate(0%,-200%);
+    font-size: 20px;
+    transition: 1s;
+    color: darkgray;
+}
+#intro:hover{
+    font-size: 23px;
+}
+#botele{
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%,-100%);
+}
+#bottext{
+    font-size: 15px;
+    font-weight: lighter;
+    color: var(--text-color);
+}

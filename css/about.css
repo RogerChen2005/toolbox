@@ -1,0 +1,20 @@
+@keyframes tr{
+    0%{
+        transform: translate(-50%,50%);
+    }
+    100%{
+        transform: translate(-50%,0%);
+    }
+}
+#maintext{
+    width: 80%;
+    margin-left: 50%;
+    margin-top: 5%;
+    transform: translate(-50%,0%);
+    line-height: 200%; 
+    animation : tr 1s;
+    color: var(--text-color);
+}
+a{
+    color: var(--text-color);
+}
