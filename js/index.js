@@ -29,11 +29,11 @@ const list = [{
 }, {
     name: "2048game",
     ico: "2048.png",
-    src: "b2048game"
+    src: "2048game"
 }, {
-    name: "wordtest",
+    name: "Word's test",
     ico: "wt.png",
-    src: "Word's test"
+    src: "wordtest"
 }, {
     name: "wordIn",
     ico: "icon.png",
